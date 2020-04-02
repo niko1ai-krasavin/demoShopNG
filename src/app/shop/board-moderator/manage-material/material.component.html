@@ -1,0 +1,49 @@
+<h1> </h1>
+<h4>Материалы товаров</h4>
+<input type="button" value="Добавить" class="btn btn-success" (click)="addMaterial()" />
+<p></p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Название</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let material of materials">
+      <ng-template [ngTemplateOutlet]="loadTemplate(material)" [ngTemplateOutletContext]="{ $implicit: material}">
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+<div>{{statusMessage}}</div>
+
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-material>
+  <td>{{material.id}}</td>
+  <td>{{material.name}}</td>
+  <td>
+    <input type="button" value="Изменить" class="btn btn-warning" (click)="editMaterial(material)" />
+  </td>
+  <td>
+    <input type="button" value="Удалить" (click)="deleteMaterial(material)" class="btn btn-danger" />
+  </td>
+</ng-template>
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+  <td>
+    <input type="text" [(ngModel)]="editedMaterial.id" readonly disabled class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="editedMaterial.name" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="saveMaterial()" class="btn btn-success" />
+  </td>
+  <td>
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+  </td>
+</ng-template>

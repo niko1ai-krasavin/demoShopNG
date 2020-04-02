@@ -1,0 +1,49 @@
+<h1> </h1>
+<h4>Размеры товаров</h4>
+<input type="button" value="Добавить" class="btn btn-success" (click)="addSize()" />
+<p></p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Размер</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let size of sizes">
+      <ng-template [ngTemplateOutlet]="loadTemplate(size)" [ngTemplateOutletContext]="{ $implicit: size}">
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+<div>{{statusMessage}}</div>
+
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-size>
+  <td>{{size.id}}</td>
+  <td>{{size.name}}</td>
+  <td>
+    <input type="button" value="Изменить" class="btn btn-warning" (click)="editSize(size)" />
+  </td>
+  <td>
+    <input type="button" value="Удалить" (click)="deleteSize(size)" class="btn btn-danger" />
+  </td>
+</ng-template>
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+  <td>
+    <input type="text" [(ngModel)]="editedSize.id" readonly disabled class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="editedSize.name" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="saveSize()" class="btn btn-success" />
+  </td>
+  <td>
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+  </td>
+</ng-template>

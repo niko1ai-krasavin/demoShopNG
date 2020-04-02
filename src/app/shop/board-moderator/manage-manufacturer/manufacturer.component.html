@@ -1,0 +1,49 @@
+<h1> </h1>
+<h4>Производители товаров</h4>
+<input type="button" value="Добавить" class="btn btn-success" (click)="addManufacturer()" />
+<p></p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Название</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let manufacturer of manufacturers">
+      <ng-template [ngTemplateOutlet]="loadTemplate(manufacturer)" [ngTemplateOutletContext]="{ $implicit: manufacturer}">
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+<div>{{statusMessage}}</div>
+
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-manufacturer>
+  <td>{{manufacturer.id}}</td>
+  <td>{{manufacturer.name}}</td>
+  <td>
+    <input type="button" value="Изменить" class="btn btn-warning" (click)="editManufacturer(manufacturer)" />
+  </td>
+  <td>
+    <input type="button" value="Удалить" (click)="deleteManufacturer(manufacturer)" class="btn btn-danger" />
+  </td>
+</ng-template>
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+  <td>
+    <input type="text" [(ngModel)]="editedManufacturer.id" readonly disabled class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="editedManufacturer.name" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="saveManufacturer()" class="btn btn-success" />
+  </td>
+  <td>
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+  </td>
+</ng-template>

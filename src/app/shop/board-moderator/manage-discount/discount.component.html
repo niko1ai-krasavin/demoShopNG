@@ -1,0 +1,49 @@
+<h1> </h1>
+<h4>Величины скидок</h4>
+<input type="button" value="Добавить" class="btn btn-success" (click)="addDiscount()" />
+<p></p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Величина скидки в %</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let discount of discounts">
+      <ng-template [ngTemplateOutlet]="loadTemplate(discount)" [ngTemplateOutletContext]="{ $implicit: discount}">
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+<div>{{statusMessage}}</div>
+
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-discount>
+  <td>{{discount.id}}</td>
+  <td>{{discount.discountValue}}</td>
+  <td>
+    <input type="button" value="Изменить" class="btn btn-warning" (click)="editDiscount(discount)" />
+  </td>
+  <td>
+    <input type="button" value="Удалить" (click)="deleteDiscount(discount)" class="btn btn-danger" />
+  </td>
+</ng-template>
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+  <td>
+    <input type="text" [(ngModel)]="editedDiscount.id" readonly disabled class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="editedDiscount.discountValue" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="saveDiscount()" class="btn btn-success" />
+  </td>
+  <td>
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+  </td>
+</ng-template>

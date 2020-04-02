@@ -1,0 +1,49 @@
+<h1> </h1>
+<h4>Цвета товаров</h4>
+<input type="button" value="Добавить" class="btn btn-success" (click)="addColor()" />
+<p></p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Название</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let color of colors">
+      <ng-template [ngTemplateOutlet]="loadTemplate(color)" [ngTemplateOutletContext]="{ $implicit: color}">
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+<div>{{statusMessage}}</div>
+
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-color>
+  <td>{{color.id}}</td>
+  <td>{{color.name}}</td>
+  <td>
+    <input type="button" value="Изменить" class="btn btn-warning" (click)="editColor(color)" />
+  </td>
+  <td>
+    <input type="button" value="Удалить" (click)="deleteColor(color)" class="btn btn-danger" />
+  </td>
+</ng-template>
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+  <td>
+    <input type="text" [(ngModel)]="editedColor.id" readonly disabled class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="editedColor.name" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="saveColor()" class="btn btn-success" />
+  </td>
+  <td>
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+  </td>
+</ng-template>
