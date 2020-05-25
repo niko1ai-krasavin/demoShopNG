@@ -1,0 +1,121 @@
+<h3>Добавление товара:</h3>
+<fieldset class="pt-3 pl-5 pr-5">
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" type="text" name="name" [(ngModel)]="product.name" #productName="ngModel"
+                    placeholder="Название товара...">
+            </div>
+            <div class="form-group">
+                <label>Category:</label>
+                <select class="form-control" name="category" [ngModel]="product.category" #productCategory="ngModel">
+                    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Type:</label>
+                <select class="form-control" name="type" [ngModel]="product.type" #productType="ngModel">
+                    <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="text-center align-middle">
+                <img src="https://zabavnik.club/wp-content/uploads/2018/05/Novoe_postuplenie_tovara_1_14084257.jpg"
+                    height="230" width="230">
+                <p>Загружаемая картинка товара</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label>Manufacturer:</label>
+                <select class="form-control" name="manufacturer" [(ngModel)]="product.manufacturer"
+                    #productManufacturer="ngModel">
+                    <option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.id">
+                        {{manufacturer.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Material:</label>
+                <div *ngFor="let material of materials">
+                    <input type="checkbox"
+                        (change)="onChange(material.id, material.name, $event.target.checked)">{{material.name}}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Color:</label>
+                <select class="form-control" name="color" [(ngModel)]="product.color" #productColor="ngModel">
+                    <option *ngFor="let color of colors" [value]="color.id">{{color.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Size:</label>
+                <select class="form-control" name="size" [(ngModel)]="product.size" #productSize="ngModel">
+                    <option *ngFor="let size of sizes" [value]="size.id">{{size.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Quantity in stock:</label>
+                <input class="form-control" type="number" name="quantityInStock" [(ngModel)]="product.quantityInStock"
+                    #productQuantityInStock="ngModel" placeholder="Количество товаров на складе...">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Discount:</label>
+                <select class="form-control" name="discount" [(ngModel)]="product.discount" #productDiscount="ngModel">
+                    <option *ngFor="let discount of discounts" [value]="discount.id">{{discount.discountValue}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Price:</label>
+                <input class="form-control" type="number" name="price" [(ngModel)]="product.price"
+                    #productPrice="ngModel" placeholder="Цена товара...">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description:</label>
+        <textarea class="form-control" name="description" [(ngModel)]="product.description"
+            #productDescription="ngModel" placeholder="Описание товара..."></textarea>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            <input type="button" value="Сохранить" (click)="saveProduct(productName, productCategory, productType, productManufacturer, 
+                    productColor, productSize, productQuantityInStock, productDiscount, 
+                    productPrice, productDescription)" class="btn btn-success" />
+        </div>
+        <div class="col-2">
+            <a class="btn btn-warning mb-3" routerLink="../">Отмена</a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{statusMessage}}
+    </div>
+</fieldset>

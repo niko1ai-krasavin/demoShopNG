@@ -9,7 +9,9 @@ import { ManufacturerComponent } from './manage-manufacturer/manufacturer.compon
 import { MaterialComponent } from './manage-material/material.component';
 import { SizeComponent } from './manage-size/size.component';
 import { TypeComponent } from './manage-type/type.component';
-import { ProductComponent } from './manage-product/product.component';
+import { ProductComponent } from './manage-product/product-list/product.component';
+import { ProductAddComponent } from './manage-product/product-add/product-add.component';
+import { ProductDetailComponent } from './manage-product/product-detail/product-detail.component';
 
 
 
@@ -27,8 +29,10 @@ const managerRoutes: Routes = [
           { path: 'material', component: MaterialComponent },
           { path: 'size', component: SizeComponent },
           { path: 'type', component: TypeComponent },
-          { path: 'product', component: ProductComponent},
-          { path: '', redirectTo: 'category', pathMatch: 'full' }
+          { path: 'product', component: ProductComponent },
+          { path: 'product/newproduct', component: ProductAddComponent },
+          { path: 'product/:id', component: ProductDetailComponent },
+          { path: '', redirectTo: 'product', pathMatch: 'full' }
         ]
       }
     ]

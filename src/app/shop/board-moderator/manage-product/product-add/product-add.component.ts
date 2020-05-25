@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ProductService } from 'src/app/services/product/product.service';
+import { NgModel } from '@angular/forms';
 
 import { Product } from 'src/app/objects/product';
-import { Discount } from 'src/app/objects/discount';
 import { Category } from 'src/app/objects/category';
-import { Manufacturer } from 'src/app/objects/manufacturer';
 import { Color } from 'src/app/objects/color';
+import { Discount } from 'src/app/objects/discount';
+import { Manufacturer } from 'src/app/objects/manufacturer';
 import { Material } from 'src/app/objects/material';
 import { Size } from 'src/app/objects/size';
 import { Type } from 'src/app/objects/type';
@@ -18,25 +17,24 @@ import { ManufacturerService } from 'src/app/services/manufacturer/manufacturer.
 import { MaterialService } from 'src/app/services/material/material.service';
 import { SizeService } from 'src/app/services/size/size.service';
 import { TypeService } from 'src/app/services/type/type.service';
-import { NgModel } from '@angular/forms';
+import { ProductService } from 'src/app/services/product/product.service';
 
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-product-add',
+  templateUrl: './product-add.component.html',
+  styleUrls: ['./product-add.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductAddComponent implements OnInit {
+
+  selectedMaterials: Array<Material> = new Array<Material>();
 
   product: Product = new Product(0, "", 0, 0, "", null, null, null, null, null, null, null);
-
-  products: Array<Product>;
 
   categories: Array<Category>;
   colors: Array<Color>;
   discounts: Array<Discount>;
   manufacturers: Array<Manufacturer>;
-  selectedMaterials: Array<Material> = new Array<Material>();
   materials: Array<Material> = new Array<Material>();
   sizes: Array<Size>;
   types: Array<Type>;
@@ -54,10 +52,8 @@ export class ProductComponent implements OnInit {
     private serviceProduct: ProductService
   ) { }
 
-
   ngOnInit() {
     this.preLoadOptions();
-    this.loadProducts();
   }
 
   preLoadOptions() {
@@ -79,15 +75,14 @@ export class ProductComponent implements OnInit {
 
   }
 
-  loadProducts() {
-    let resp = this.serviceProduct.getProducts();
-    resp.subscribe((data: Product[]) => this.products = data);
-  }
 
   onChange(id: number, name: string, isChecked: boolean) {
     if (isChecked) {
       let newMaterial = new Material(id, name);
       this.selectedMaterials.push(newMaterial);
+    } else {
+      let index = this.selectedMaterials.findIndex(item => item.id == id );
+      this.selectedMaterials.splice(index, 1);
     }
   }
 
@@ -124,25 +119,5 @@ export class ProductComponent implements OnInit {
       data => {
         ; (this.statusMessage = 'Данные успешно добавлены')
       })
-  }
-
-  deleteProduct(product: Product) {
-    this.serviceProduct.deleteProduct(product.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadProducts()
-      })
-  }
-
-  cancel() {
-    this.preLoadOptions();
-  }
-
-  editProduct(product: Product) {
-
-    //this.statusMessage = "" + product.id + " " + product.name + " " + product.category + " "
-  }
-
-  addProduct() {
-    //null;
   }
 }

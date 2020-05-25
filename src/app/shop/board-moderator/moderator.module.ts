@@ -12,7 +12,9 @@ import { ManufacturerComponent } from './manage-manufacturer/manufacturer.compon
 import { MaterialComponent } from './manage-material/material.component';
 import { SizeComponent } from './manage-size/size.component';
 import { TypeComponent } from './manage-type/type.component';
-import { ProductComponent } from './manage-product/product.component';
+import { ProductComponent } from './manage-product/product-list/product.component';
+import { ProductAddComponent } from './manage-product/product-add/product-add.component';
+import { ProductDetailComponent } from './manage-product/product-detail/product-detail.component';
 
 
 
@@ -26,7 +28,9 @@ import { ProductComponent } from './manage-product/product.component';
     MaterialComponent,
     SizeComponent,
     TypeComponent,
-    ProductComponent
+    ProductComponent,
+    ProductAddComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

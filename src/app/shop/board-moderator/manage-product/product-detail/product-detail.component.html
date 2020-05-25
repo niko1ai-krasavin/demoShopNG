@@ -1,0 +1,157 @@
+<h3>Изменение товара:</h3>
+<fieldset class="pt-3 pl-5 pr-5">
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" type="text" name="name" [(ngModel)]="product.name"
+                    placeholder="Название товара...">
+            </div>
+            <div class="form-group">
+                <label>Category:</label>
+                <select class="form-control" name="category">
+                    <ng-template ngFor let-category [ngForOf]="categories">
+                        <ng-template [ngIf]="(category.id == product.category.id)">
+                            <option [value]="category.id" selected>{{category.name}}</option>
+                        </ng-template>
+                        <ng-template [ngIf]="!(category.id == product.category.id)">
+                            <option [value]="category.id">{{category.name}}</option>
+                        </ng-template>
+                    </ng-template>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Type:</label>
+                <select class="form-control" name="type">
+                    <ng-template ngFor let-type [ngForOf]="types">
+                        <ng-template [ngIf]="(type.id == product.type.id)">
+                            <option [value]="type.id" selected>{{type.name}}</option>
+                        </ng-template>
+                        <ng-template [ngIf]="!(type.id == product.type.id)">
+                            <option [value]="type.id">{{type.name}}</option>
+                        </ng-template>
+                    </ng-template>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="text-center align-middle">
+                <img src="https://zabavnik.club/wp-content/uploads/2018/05/Novoe_postuplenie_tovara_1_14084257.jpg"
+                    height="230" width="230">
+                <p>Загружаемая картинка товара</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label>Manufacturer:</label>
+                <select class="form-control" name="manufacturer">
+                    <ng-template ngFor let-manufacturer [ngForOf]="manufacturers">
+                        <ng-template [ngIf]="(manufacturer.id == product.manufacturer.id)">
+                            <option [value]="manufacturer.id" selected>{{manufacturer.name}}</option>
+                        </ng-template>
+                        <ng-template [ngIf]="!(manufacturer.id == product.manufacturer.id)">
+                            <option [value]="manufacturer.id">{{manufacturer.name}}</option>
+                        </ng-template>
+                    </ng-template>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Material:</label>
+                <div *ngFor="let material of materials">
+                    <input type="checkbox" name = 'checkboxMat'
+                        (change)="onChange(material.id, material.name, $event.target.checked)">{{material.name}}<br>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Color:</label>
+                <select class="form-control" name="color">
+                    <ng-template ngFor let-color [ngForOf]="colors">
+                        <ng-template [ngIf]="(color.id == product.color.id)">
+                            <option [value]="color.id" selected>{{color.name}}</option>
+                        </ng-template>
+                        <ng-template [ngIf]="!(color.id == product.color.id)">
+                            <option [value]="color.id">{{color.name}}</option>
+                        </ng-template>
+                    </ng-template>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Size:</label>
+                <select class="form-control" name="size">
+                    <ng-template ngFor let-size [ngForOf]="sizes">
+                        <ng-template [ngIf]="(size.id == product.size.id)">
+                            <option [value]="size.id" selected>{{size.name}}</option>
+                        </ng-template>
+                        <ng-template [ngIf]="!(size.id == product.size.id)">
+                            <option [value]="size.id">{{size.name}}</option>
+                        </ng-template>
+                    </ng-template>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Quantity in stock:</label>
+                <input class="form-control" type="number" name="quantityInStock" [(ngModel)]="product.quantityInStock"
+                    placeholder="Количество товаров на складе...">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Discount:</label>
+                <select class="form-control" name="discount">
+                    <ng-template ngFor let-discount [ngForOf]="discounts">
+                        <ng-template [ngIf]="(discount.id == product.discount.id)">
+                            <option [value]="discount.id" selected>{{discount.discountValue}}</option>
+                        </ng-template>
+                        <ng-template [ngIf]="!(discount.id == product.discount.id)">
+                            <option [value]="discount.id">{{discount.discountValue}}</option>
+                        </ng-template>
+                    </ng-template>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Price:</label>
+                <input class="form-control" type="number" name="price" [(ngModel)]="product.price"
+                    placeholder="Цена товара...">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description:</label>
+        <textarea class="form-control" name="description" [(ngModel)]="product.description"
+            placeholder="Описание товара..."></textarea>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            <input type="button" value="Сохранить" (click)="saveProduct()" class="btn btn-success" />
+        </div>
+        <div class="col-2">
+            <a class="btn btn-warning mb-3" routerLink="../">Отмена</a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{statusMessage}}
+    </div>
+</fieldset>

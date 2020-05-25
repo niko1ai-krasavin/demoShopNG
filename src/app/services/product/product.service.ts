@@ -12,6 +12,10 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
+  public getProductById(id: number) : Observable<any> {
+    return this.http.get("http://localhost:8080/api/product/" + id);
+  }
+
   public getProducts() :Observable<any> {
     return this.http.get("http://localhost:8080/api/product");
   }
