@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "demoShopNG"
+    }
+  },
+  "defaultProject": "demoShopNG",
+  "cli": {
+    "analytics": "643cb592-7450-4372-9667-07fc529cab20"
+  }
 }
