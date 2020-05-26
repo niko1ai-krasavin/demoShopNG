@@ -55,15 +55,15 @@ export class CategoryComponent implements OnInit {
   saveCategory() {
     if (this.isNewRecord) {
       this.service.createCategory(this.editedCategory).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.loadCategories()
+        (data: Category[]) => {
+          ; (this.statusMessage = 'Данные успешно добавлены'), this.categories = data
         })
       this.isNewRecord = false;
       this.editedCategory = null;
     } else {
       this.service.updateCategory(this.editedCategory.id, this.editedCategory).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.loadCategories()
+        (data: Category[]) => {
+          ; (this.statusMessage = 'Данные успешно обновлены'), this.categories = data
         })
       this.editedCategory = null;
     }
@@ -79,8 +79,8 @@ export class CategoryComponent implements OnInit {
 
   deleteCategory(category: Category) {
     this.service.deleteCategory(category.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadCategories()
+      (data: Category[]) => {
+        ; (this.statusMessage = "Data deleted successfully"), this.categories = data
       })
   }
 

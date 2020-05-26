@@ -53,15 +53,15 @@ export class ManufacturerComponent implements OnInit {
   saveManufacturer() {
     if (this.isNewRecord) {
       this.service.createManufacturer(this.editedManufacturer).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.loadManufacturers()
+        (data: Manufacturer[]) => {
+          ; (this.statusMessage = 'Данные успешно добавлены'), this.manufacturers = data
         })
       this.isNewRecord = false;
       this.editedManufacturer = null;
     } else {
       this.service.updateManufacturer(this.editedManufacturer.id, this.editedManufacturer).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.loadManufacturers()
+        (data: Manufacturer[]) => {
+          ; (this.statusMessage = 'Данные успешно обновлены'), this.manufacturers = data
         })
       this.editedManufacturer = null;
     }
@@ -77,8 +77,8 @@ export class ManufacturerComponent implements OnInit {
 
   deleteManufacturer(manufacturer: Manufacturer) {
     this.service.deleteManufacturer(manufacturer.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadManufacturers()
+      (data: Manufacturer[])=> {
+        ; (this.statusMessage = "Data deleted successfully"), this.manufacturers = data
       })
   }
 }

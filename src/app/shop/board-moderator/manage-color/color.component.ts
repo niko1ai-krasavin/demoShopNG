@@ -53,15 +53,15 @@ export class ColorComponent implements OnInit {
   saveColor() {
     if (this.isNewRecord) {
       this.service.createColor(this.editedColor).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.loadColors()
+        (data: Color[]) => {
+          ; (this.statusMessage = 'Данные успешно добавлены'), this.colors = data
         })
       this.isNewRecord = false;
       this.editedColor = null;
     } else {
       this.service.updateColor(this.editedColor.id, this.editedColor).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.loadColors()
+        (data: Color[]) => {
+          ; (this.statusMessage = 'Данные успешно обновлены'), this.colors = data
         })
       this.editedColor = null;
     }
@@ -77,8 +77,8 @@ export class ColorComponent implements OnInit {
 
   deleteColor(color: Color) {
     this.service.deleteColor(color.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadColors()
+      (data: Color[]) => {
+        ; (this.statusMessage = "Data deleted successfully"), this.colors = data
       })
   }
 

@@ -53,15 +53,15 @@ export class MaterialComponent implements OnInit {
   saveMaterial() {
     if (this.isNewRecord) {
       this.service.createMaterial(this.editedMaterial).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.loadMaterials()
+        (data: Material[]) => {
+          ; (this.statusMessage = 'Данные успешно добавлены'), this.materials = data
         })
       this.isNewRecord = false;
       this.editedMaterial = null;
     } else {
       this.service.updateMaterial(this.editedMaterial.id, this.editedMaterial).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.loadMaterials()
+        (data: Material[]) => {
+          ; (this.statusMessage = 'Данные успешно обновлены'), this.materials = data
         })
       this.editedMaterial = null;
     }
@@ -77,8 +77,8 @@ export class MaterialComponent implements OnInit {
 
   deleteMaterial(material: Material) {
     this.service.deleteMaterial(material.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadMaterials()
+      (data: Material[]) => {
+        ; (this.statusMessage = "Data deleted successfully"), this.materials = data
       })
   }
 

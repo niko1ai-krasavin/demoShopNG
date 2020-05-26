@@ -53,15 +53,15 @@ export class TypeComponent implements OnInit {
   saveType() {
     if (this.isNewRecord) {
       this.service.createType(this.editedType).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.loadTypes()
+        (data: Type[]) => {
+          ; (this.statusMessage = 'Данные успешно добавлены'), this.types = data
         })
       this.isNewRecord = false;
       this.editedType = null;
     } else {
       this.service.updateType(this.editedType.id, this.editedType).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.loadTypes()
+        (data: Type[]) => {
+          ; (this.statusMessage = 'Данные успешно обновлены'), this.types = data
         })
       this.editedType = null;
     }
@@ -77,8 +77,8 @@ export class TypeComponent implements OnInit {
 
   deleteType(type: Type) {
     this.service.deleteType(type.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadTypes()
+      (data: Type[]) => {
+        ; (this.statusMessage = "Data deleted successfully"), this.types = data
       })
   }
 

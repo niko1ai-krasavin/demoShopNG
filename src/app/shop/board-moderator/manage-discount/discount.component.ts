@@ -53,15 +53,15 @@ export class DiscountComponent implements OnInit {
   saveDiscount() {
     if (this.isNewRecord) {
       this.service.createDiscount(this.editedDiscount).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.loadDiscounts()
+        (data: Discount[]) => {
+          ; (this.statusMessage = 'Данные успешно добавлены'), this.discounts = data
         })
       this.isNewRecord = false;
       this.editedDiscount = null;
     } else {
       this.service.updateDiscount(this.editedDiscount.id, this.editedDiscount).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.loadDiscounts()
+        (data: Discount[]) => {
+          ; (this.statusMessage = 'Данные успешно обновлены'), this.discounts = data
         })
       this.editedDiscount = null;
     }
@@ -77,8 +77,8 @@ export class DiscountComponent implements OnInit {
 
   deleteDiscount(discount: Discount) {
     this.service.deleteDiscount(discount.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadDiscounts()
+      (data: Discount[]) => {
+        ; (this.statusMessage = "Data deleted successfully"), this.discounts = data
       })
   }
 

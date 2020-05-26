@@ -53,15 +53,15 @@ export class SizeComponent implements OnInit {
   saveSize() {
     if (this.isNewRecord) {
       this.service.createSize(this.editedSize).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.loadSizes()
+        (data: Size[]) => {
+          ; (this.statusMessage = 'Данные успешно добавлены'), this.sizes = data
         })
       this.isNewRecord = false;
       this.editedSize = null;
     } else {
       this.service.updateSize(this.editedSize.id, this.editedSize).subscribe(
-        data => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.loadSizes()
+        (data: Size[]) => {
+          ; (this.statusMessage = 'Данные успешно обновлены'), this.sizes = data
         })
       this.editedSize = null;
     }
@@ -77,8 +77,8 @@ export class SizeComponent implements OnInit {
 
   deleteSize(size: Size) {
     this.service.deleteSize(size.id).subscribe(
-      data => {
-        ; (this.statusMessage = "Data deleted successfully"), this.loadSizes()
+      (data: Size[]) => {
+        ; (this.statusMessage = "Data deleted successfully"), this.sizes = data
       })
   }
 
