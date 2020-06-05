@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { Type } from 'src/app/objects/type';
+import { Type } from 'src/app/models/type';
 import { TypeService } from 'src/app/services/type/type.service';
 
 @Component({

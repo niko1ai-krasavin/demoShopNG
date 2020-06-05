@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { Material } from 'src/app/objects/material';
+import { Material } from 'src/app/models/material';
 import { MaterialService } from 'src/app/services/material/material.service';
 
 @Component({

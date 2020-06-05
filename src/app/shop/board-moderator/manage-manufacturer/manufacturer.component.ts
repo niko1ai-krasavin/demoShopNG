@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { Manufacturer } from 'src/app/objects/manufacturer';
+import { Manufacturer } from 'src/app/models/manufacturer';
 import { ManufacturerService } from 'src/app/services/manufacturer/manufacturer.service';
 
 @Component({

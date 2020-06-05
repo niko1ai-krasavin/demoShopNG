@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { Discount } from 'src/app/objects/discount';
+import { Discount } from 'src/app/models/discount';
 import { DiscountService } from 'src/app/services/discount/discount.service';
 
 @Component({

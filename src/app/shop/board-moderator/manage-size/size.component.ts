@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { SizeService } from 'src/app/services/size/size.service';
-import { Size } from 'src/app/objects/size';
+import { Size } from 'src/app/models/size';
 
 @Component({
   selector: 'app-size',

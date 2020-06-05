@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
-import { Product } from 'src/app/objects/product';
-import { Category } from 'src/app/objects/category';
-import { Color } from 'src/app/objects/color';
-import { Discount } from 'src/app/objects/discount';
-import { Manufacturer } from 'src/app/objects/manufacturer';
-import { Material } from 'src/app/objects/material';
-import { Size } from 'src/app/objects/size';
-import { Type } from 'src/app/objects/type';
+import { Product } from 'src/app/models/product';
+import { Category } from 'src/app/models/category';
+import { Color } from 'src/app/models/color';
+import { Discount } from 'src/app/models/discount';
+import { Manufacturer } from 'src/app/models/manufacturer';
+import { Material } from 'src/app/models/material';
+import { Size } from 'src/app/models/size';
+import { Type } from 'src/app/models/type';
 
 import { CategoryService } from 'src/app/services/category/category.service';
 import { ColorService } from 'src/app/services/color/color.service';

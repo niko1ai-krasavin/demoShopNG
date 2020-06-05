@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { TokenStorageService } from './security_services/token-storage.service';
 
 
@@ -14,6 +15,10 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
+
+  isModalFormVisible = false;
+  isLoginFormVisibleApp = false;
+  isRegistrationFormVisibleApp = false;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -37,5 +42,35 @@ export class AppComponent implements OnInit {
     window.location.reload();
   }
 
+  openLoginForm() {
+    this.toggleModalFormVisibility(true, 0);
+  }
 
+  openRegistrationForm() {
+    this.toggleModalFormVisibility(true, 1);
+  }
+
+  private toggleModalFormVisibility(dir: boolean, logOrReg?: number) {
+    this.isModalFormVisible = dir;
+    if (dir) {
+      if (logOrReg == 1) {
+        this.isRegistrationFormVisibleApp = true;
+      } else {
+        this.isLoginFormVisibleApp = true;
+      }
+      window.setTimeout(() => {
+        document.getElementById('auth01').style.display = 'block';
+      }, 5);
+      
+    } else {
+      this.isLoginFormVisibleApp = false;
+      this.isRegistrationFormVisibleApp = false;
+      this.isModalFormVisible = false;
+      document.getElementById('auth01').style.display = 'none';
+    }
+  }
+
+  toCloseModalForm(isClosed: any) {
+    this.toggleModalFormVisibility(!isClosed);
+  }
 }

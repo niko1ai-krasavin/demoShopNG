@@ -1,0 +1,28 @@
+<div id="auth01" class="auth modal modal01 animate">
+    <div class="auth-container">
+      <div class="card">
+        <header class="auth-header">
+          <button class="close" (click)="closeModalForm()">
+            <span>×</span>
+          </button>
+          <h1 class="auth-title">
+            <div class="logo">
+              <span class="l l1"></span>
+              <span class="l l2"></span>
+              <span class="l l3"></span>
+              <span class="l l4"></span>
+            </div>
+            DemoShop
+          </h1>
+        </header>
+        <div class="auth-content">
+          <div *ngIf="toggleLoginFormVisible">
+            <app-login></app-login>
+          </div>
+          <div *ngIf="toggleRegistrationFormVisible">
+            <app-registration></app-registration>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

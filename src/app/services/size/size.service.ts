@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Size } from 'src/app/objects/size';
+import { Size } from 'src/app/models/size';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from 'src/app/services/product/product.service';
 
-import { Product } from 'src/app/objects/product';
+import { Product } from 'src/app/models/product';
 
 
 @Component({

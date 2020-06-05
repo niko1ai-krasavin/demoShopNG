@@ -23,6 +23,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/vendor.css",
+              "src/assets/theme.css",
               "src/styles.css"
             ],
             "scripts": []

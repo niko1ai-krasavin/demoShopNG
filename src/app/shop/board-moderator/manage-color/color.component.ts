@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { Color } from 'src/app/objects/color';
+import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color/color.service';
 
 @Component({
