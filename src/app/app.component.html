@@ -29,7 +29,7 @@
         </div>
         <div class="row" *ngIf="isLoggedIn">
           <div class="col">
-            <a href="/profile" class="nav-link" routerLink="profile">Здравствуйте, {{ username }}</a>
+            <a href="/profile" class="nav-link" routerLink="profile">Hello, {{ username }}</a>
           </div>
           <div class="col">
             <a class="nav-link" (click)="logout()"><i class="fa fa-power-off icon"></i> LogOut</a>

@@ -11,9 +11,9 @@ export class AuthComponent implements OnInit {
   @Input() isRegistrationFormVisibleAuth;
   @Output() isTheModalFormClosed = new EventEmitter<boolean>();
 
-  toggleLoginFormVisible : boolean = false;
-  toggleRegistrationFormVisible : boolean = false;
-  
+  toggleLoginFormVisible: boolean = false;
+  toggleRegistrationFormVisible: boolean = false;
+
   ngOnInit(): void {
     this.readInput();
   }
@@ -30,5 +30,15 @@ export class AuthComponent implements OnInit {
 
   closeModalForm() {
     this.isTheModalFormClosed.emit(true);
+  }
+
+  doTransitionToAnotherForm(event: boolean) {
+    if (event) {
+      this.toggleLoginFormVisible = false;
+      this.toggleRegistrationFormVisible = true;
+    } else {
+      this.toggleRegistrationFormVisible = false;
+      this.toggleLoginFormVisible = true;
+    }
   }
 }

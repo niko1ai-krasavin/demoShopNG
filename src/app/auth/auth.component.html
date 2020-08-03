@@ -17,10 +17,14 @@
         </header>
         <div class="auth-content">
           <div *ngIf="toggleLoginFormVisible">
-            <app-login></app-login>
+            <app-login
+            (isTransition)="doTransitionToAnotherForm($event)"
+            ></app-login>
           </div>
           <div *ngIf="toggleRegistrationFormVisible">
-            <app-registration></app-registration>
+            <app-registration
+            (isNotTransition)="doTransitionToAnotherForm($event)"
+            ></app-registration>
           </div>
         </div>
       </div>

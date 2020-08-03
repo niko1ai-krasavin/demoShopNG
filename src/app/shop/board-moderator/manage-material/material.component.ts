@@ -54,14 +54,14 @@ export class MaterialComponent implements OnInit {
     if (this.isNewRecord) {
       this.service.createMaterial(this.editedMaterial).subscribe(
         (data: Material[]) => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.materials = data
+          ; (this.statusMessage = 'Data added successfully'), this.materials = data
         })
       this.isNewRecord = false;
       this.editedMaterial = null;
     } else {
       this.service.updateMaterial(this.editedMaterial.id, this.editedMaterial).subscribe(
         (data: Material[]) => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.materials = data
+          ; (this.statusMessage = 'Data updated successfully'), this.materials = data
         })
       this.editedMaterial = null;
     }

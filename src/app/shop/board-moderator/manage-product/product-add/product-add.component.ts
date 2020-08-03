@@ -117,7 +117,7 @@ export class ProductAddComponent implements OnInit {
 
     this.serviceProduct.createProduct(this.product).subscribe(
       data => {
-        ; (this.statusMessage = 'Данные успешно добавлены')
+        ; (this.statusMessage = 'Data added successfully')
       })
   }
 }

@@ -152,7 +152,7 @@ export class ProductDetailComponent implements OnInit {
 
     this.serviceProduct.updateProduct(this.product.id, this.product).subscribe(
       data => {
-        ; (this.statusMessage = 'Данные успешно изменены')
+        ; (this.statusMessage = 'Data changed successfully')
       })
   }
 }

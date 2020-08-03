@@ -54,14 +54,14 @@ export class DiscountComponent implements OnInit {
     if (this.isNewRecord) {
       this.service.createDiscount(this.editedDiscount).subscribe(
         (data: Discount[]) => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.discounts = data
+          ; (this.statusMessage = 'Data added successfully'), this.discounts = data
         })
       this.isNewRecord = false;
       this.editedDiscount = null;
     } else {
       this.service.updateDiscount(this.editedDiscount.id, this.editedDiscount).subscribe(
         (data: Discount[]) => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.discounts = data
+          ; (this.statusMessage = 'Data updated successfully'), this.discounts = data
         })
       this.editedDiscount = null;
     }

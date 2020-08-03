@@ -1,11 +1,11 @@
-<h3>Управление категориями:</h3>
+<h3>Manage Categories:</h3>
 <div class="ml-3 mr-3 mt-3">
-  <input type="button" value="Добавить" class="btn btn-success mb-3" (click)="addCategory()" />
+  <input type="button" value="Add" class="btn btn-success mb-3" (click)="addCategory()" />
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Id</th>
-        <th>Название</th>
+        <th>Title</th>
         <th></th>
         <th></th>
       </tr>
@@ -19,31 +19,31 @@
   </table>
   <div>{{statusMessage}}</div>
 
-  <!--шаблон для чтения-->
+  <!--template for reading -->
   <ng-template #readOnlyTemplate let-category>
     <td>{{category.id}}</td>
     <td>{{category.name}}</td>
     <td>
-      <input type="button" value="Изменить" class="btn btn-warning" (click)="editCategory(category)" />
+      <input type="button" value="Edit" class="btn btn-warning" (click)="editCategory(category)"/>
     </td>
     <td>
-      <input type="button" value="Удалить" (click)="deleteCategory(category)" class="btn btn-danger" />
+      <input type="button" value="Delete" (click)="deleteCategory(category)" class="btn btn-danger"/>
     </td>
   </ng-template>
 
-  <!--шаблон для редактирования-->
+  <!--template for editing-->
   <ng-template #editTemplate>
     <td>
-      <input type="text" [(ngModel)]="editedCategory.id" readonly disabled class="form-control" />
+      <input type="text" [(ngModel)]="editedCategory.id" readonly disabled class="form-control"/>
     </td>
     <td>
-      <input type="text" [(ngModel)]="editedCategory.name" class="form-control" />
+      <input type="text" [(ngModel)]="editedCategory.name" class="form-control"/>
     </td>
     <td>
-      <input type="button" value="Сохранить" (click)="saveCategory()" class="btn btn-success" />
+      <input type="button" value="Save" (click)="saveCategory()" class="btn btn-success"/>
     </td>
     <td>
-      <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+      <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning"/>
     </td>
   </ng-template>
 </div>

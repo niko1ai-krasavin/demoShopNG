@@ -54,14 +54,14 @@ export class ManufacturerComponent implements OnInit {
     if (this.isNewRecord) {
       this.service.createManufacturer(this.editedManufacturer).subscribe(
         (data: Manufacturer[]) => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.manufacturers = data
+          ; (this.statusMessage = 'Data added successfully'), this.manufacturers = data
         })
       this.isNewRecord = false;
       this.editedManufacturer = null;
     } else {
       this.service.updateManufacturer(this.editedManufacturer.id, this.editedManufacturer).subscribe(
         (data: Manufacturer[]) => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.manufacturers = data
+          ; (this.statusMessage = 'Data updated successfully'), this.manufacturers = data
         })
       this.editedManufacturer = null;
     }

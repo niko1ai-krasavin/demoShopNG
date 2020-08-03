@@ -1,21 +1,21 @@
-<h3>Управление товарами:</h3>
+<h3>Manage Products:</h3>
 <div class="ml-3 mr-3 mt-3 pb-3">
-    <a class="btn btn-success mb-3" routerLink="./newproduct">Добавить</a>
+    <a class="btn btn-success mb-3" routerLink="./newproduct">Add</a>
     <table class="table table-hover">
         <thead>
             <tr>
                 <th class="text-center align-middle">Id</th>
-                <th class="align-middle">Название</th>
-                <th class="text-center align-middle">Количество на складе</th>
-                <th class="text-center align-middle">Цена, руб.</th>
-                <th class="text-center align-middle">Описание</th>
-                <th class="text-center align-middle">Категория</th>
-                <th class="text-center align-middle">Тип</th>
-                <th class="text-center align-middle">Производитель</th>
-                <th class="text-center align-middle">Размер</th>
-                <th class="text-center align-middle">Цвет</th>
-                <th class="text-center align-middle">Материал(ы)</th>
-                <th class="text-center align-middle">Скидка, %</th>
+                <th class="align-middle">Title</th>
+                <th class="text-center align-middle">Quantity in stock</th>
+                <th class="text-center align-middle">Price</th>
+                <th class="text-center align-middle">Description</th>
+                <th class="text-center align-middle">Category</th>
+                <th class="text-center align-middle">Type</th>
+                <th class="text-center align-middle">Manufacturer</th>
+                <th class="text-center align-middle">Size</th>
+                <th class="text-center align-middle">Color</th>
+                <th class="text-center align-middle">Material(s)</th>
+                <th class="text-center align-middle">Discount, %</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -37,9 +37,9 @@
             </td>
             <td class="text-center">{{product.discount.discountValue}}</td>
             <td>
-                <a class="btn btn-warning mb-3" routerLink="./{{product.id}}">Изменить</a>
+                <a class="btn btn-warning mb-3" routerLink="./{{product.id}}">Edit</a>
             </td>
-            <td><input type="button" value="Удалить" (click)="deleteProduct(product)" class="btn btn-danger" /></td>
+            <td><input type="button" value="Delete" (click)="deleteProduct(product)" class="btn btn-danger" /></td>
             </tr>
         </tbody>
     </table>

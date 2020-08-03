@@ -1,11 +1,11 @@
-<h3>Изменение товара:</h3>
+<h3>Edit of product:</h3>
 <fieldset class="pt-3 pl-5 pr-5">
     <div class="row">
         <div class="col-8">
             <div class="form-group">
                 <label>Name:</label>
                 <input class="form-control" type="text" name="name" [(ngModel)]="product.name"
-                    placeholder="Название товара...">
+                    placeholder="Product Name...">
             </div>
             <div class="form-group">
                 <label>Category:</label>
@@ -39,7 +39,7 @@
             <div class="text-center align-middle">
                 <img src="https://zabavnik.club/wp-content/uploads/2018/05/Novoe_postuplenie_tovara_1_14084257.jpg"
                     height="230" width="230">
-                <p>Загружаемая картинка товара</p>
+                <p>Downloadable product picture</p>
             </div>
         </div>
     </div>
@@ -109,7 +109,7 @@
             <div class="form-group">
                 <label>Quantity in stock:</label>
                 <input class="form-control" type="number" name="quantityInStock" [(ngModel)]="product.quantityInStock"
-                    placeholder="Количество товаров на складе...">
+                    placeholder="Quantity of products in stock ...">
             </div>
         </div>
         <div class="col">
@@ -131,7 +131,7 @@
             <div class="form-group">
                 <label>Price:</label>
                 <input class="form-control" type="number" name="price" [(ngModel)]="product.price"
-                    placeholder="Цена товара...">
+                    placeholder="The price of the product...">
             </div>
         </div>
     </div>
@@ -139,15 +139,15 @@
     <div class="form-group">
         <label>Description:</label>
         <textarea class="form-control" name="description" [(ngModel)]="product.description"
-            placeholder="Описание товара..."></textarea>
+            placeholder="Product description..."></textarea>
     </div>
 
     <div class="row">
         <div class="col-2">
-            <input type="button" value="Сохранить" (click)="saveProduct()" class="btn btn-success" />
+            <input type="button" value="Save" (click)="saveProduct()" class="btn btn-success" />
         </div>
         <div class="col-2">
-            <a class="btn btn-warning mb-3" routerLink="../">Отмена</a>
+            <a class="btn btn-warning mb-3" routerLink="../">Cancel</a>
         </div>
     </div>
 

@@ -56,14 +56,14 @@ export class CategoryComponent implements OnInit {
     if (this.isNewRecord) {
       this.service.createCategory(this.editedCategory).subscribe(
         (data: Category[]) => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.categories = data
+          ; (this.statusMessage = 'Data added successfully'), this.categories = data
         })
       this.isNewRecord = false;
       this.editedCategory = null;
     } else {
       this.service.updateCategory(this.editedCategory.id, this.editedCategory).subscribe(
         (data: Category[]) => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.categories = data
+          ; (this.statusMessage = 'Data updated successfully'), this.categories = data
         })
       this.editedCategory = null;
     }

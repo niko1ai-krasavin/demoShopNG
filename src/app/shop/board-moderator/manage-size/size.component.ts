@@ -54,14 +54,14 @@ export class SizeComponent implements OnInit {
     if (this.isNewRecord) {
       this.service.createSize(this.editedSize).subscribe(
         (data: Size[]) => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.sizes = data
+          ; (this.statusMessage = 'Data added successfully'), this.sizes = data
         })
       this.isNewRecord = false;
       this.editedSize = null;
     } else {
       this.service.updateSize(this.editedSize.id, this.editedSize).subscribe(
         (data: Size[]) => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.sizes = data
+          ; (this.statusMessage = 'Data updated successfully'), this.sizes = data
         })
       this.editedSize = null;
     }

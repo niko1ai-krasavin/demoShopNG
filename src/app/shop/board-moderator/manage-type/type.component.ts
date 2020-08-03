@@ -54,14 +54,14 @@ export class TypeComponent implements OnInit {
     if (this.isNewRecord) {
       this.service.createType(this.editedType).subscribe(
         (data: Type[]) => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.types = data
+          ; (this.statusMessage = 'Data added successfully'), this.types = data
         })
       this.isNewRecord = false;
       this.editedType = null;
     } else {
       this.service.updateType(this.editedType.id, this.editedType).subscribe(
         (data: Type[]) => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.types = data
+          ; (this.statusMessage = 'Data updated successfully'), this.types = data
         })
       this.editedType = null;
     }

@@ -1,19 +1,44 @@
-<p class="text-xs-center">Войдите для работы</p>
-<form>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" class="form-control underlined" id="email" placeholder="Введите ваш email">
+<p class="text-xs-center">Login to work</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group" [ngClass]="{ 'has-error' : form.get('username').touched && form.get('username').invalid }">
+    <label for="username">User Name</label>
+    <input type="text" class="form-control underlined" id="username" placeholder="Enter your username"
+      formControlName="username">
+    <span class="form-help-text" *ngIf="form.get('username').touched && form.get('username').invalid">
+      <span *ngIf="form.get('username')['errors']['required']">Username cannot be empty.</span>
+    </span>
+  </div>
+  <div class="form-group" [ngClass]="{ 'has-error' : form.get('password').touched && form.get('password').invalid }">
+    <label for="password">Password</label>
+    <input type="password" class="form-control underlined" id="password" placeholder="Enter password"
+      formControlName="password">
+    <span class="form-help-text" *ngIf="form.get('password').touched && form.get('password').invalid">
+      <span *ngIf="form.get('password')['errors']['required']">The password must not be empty.</span>
+      <span *ngIf="form.get('password')['errors']['minlength']">
+        Password must be greater than or equal to
+        {{form.get('password')['errors']['minlength']['requiredLength']}} characters. Now 
+        {{form.get('password')['errors']['minlength']['actualLength']}} characters.</span>
+    </span>
   </div>
   <div class="form-group">
-    <label for="password">Пароль</label>
-    <input type="password" class="form-control underlined" id="password" placeholder="Пароль">
+    <button
+    type="submit"
+    class="btn btn-block btn-primary"
+    [disabled]="form.invalid"
+    >
+    Login
+  </button>
   </div>
+
   <div class="form-group">
-    <button type="submit" class="btn btn-block btn-primary">Войти</button>
+    <div class="alert alert-{{message.type}}" *ngIf="form.valid && isLoginFailed && message.text">
+      {{ message.text }}
+    </div>
   </div>
+
   <div class="form-group">
     <p class="text-muted text-xs-center">
-      Нет аккаунта? <a href="#">Зарегистрироваться!</a>
+      Don't have an account? <a class="nav-link" (click)="doTransitionToRegForm()">Register now!</a>
     </p>
   </div>
 </form>

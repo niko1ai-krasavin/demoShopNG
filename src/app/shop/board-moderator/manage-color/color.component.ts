@@ -54,14 +54,14 @@ export class ColorComponent implements OnInit {
     if (this.isNewRecord) {
       this.service.createColor(this.editedColor).subscribe(
         (data: Color[]) => {
-          ; (this.statusMessage = 'Данные успешно добавлены'), this.colors = data
+          ; (this.statusMessage = 'Data added successfully'), this.colors = data
         })
       this.isNewRecord = false;
       this.editedColor = null;
     } else {
       this.service.updateColor(this.editedColor.id, this.editedColor).subscribe(
         (data: Color[]) => {
-          ; (this.statusMessage = 'Данные успешно обновлены'), this.colors = data
+          ; (this.statusMessage = 'Data updated successfully'), this.colors = data
         })
       this.editedColor = null;
     }
