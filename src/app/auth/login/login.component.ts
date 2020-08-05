@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
         this.reloadPage();
       },
       errors => {
-        console.log(errors);
         if (errors.error.status === 401) {
           this.showMessage('danger', "You are not logged in. Login or password entered incorrectly.");
           this.isLoginFailed = true;
